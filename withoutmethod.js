@@ -3,27 +3,25 @@ function findUniqueNamesNotInArr(arr1,arr2){
     let uniqueNames = [];
     let nameOccurences = {};
 
-    for (let i=0; i < arr1.length; i++){
+    for (let i=0; i < arr2.length; i++){
 
-        const name = arr1[i];
+        const name = arr2[i];
+        nameOccurences[name] = true
+    }
 
-        if (!nameOccurences[name] && !isNameInArr(name,arr2)){
+    for (let i = 0; i < arr1.length; i++){
+        const name = arr1[i]
+
+        if (!nameOccurences[name]){
             uniqueNames[uniqueNames.length] = name;
             nameOccurences[name] = true;
         }
-    }
+    } 
+
     return uniqueNames
 }
 
 
-function isNameInArr(name,arr){
-    for (let i =0; i< arr.length; i++){
-        if (arr[i] === name){
-            return true
-        }
-    }
-    return false
-}
 
 function findCommonNames(arr1,arr2){
     let nameOccurences = {}
